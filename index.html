@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/style.css" />
     <title>Tasky Application</title>
   </head>
-  <body>
+  <body onload="loadInitialData()"><!--To load the initial data to the UI-->
     <!--Navigation Bar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -136,7 +136,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="type_tags" class="form-label">Task Type</label>
+                <label for="type" class="form-label">Task Type</label>
                 <input
                   type="url"
                   class="form-control"
@@ -166,7 +166,13 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="handleSubmit()"
+            >
+              Save changes
+            </button>
           </div>
         </div>
       </div>
@@ -184,6 +190,8 @@
                 placeholder="Search Your Task Here.."
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
+                id="Search_Window"
+                oninput="searchTask.apply()"
               />
               <span class="input-group-text" id="addon-wrapping"
                 ><button style="border: none; background-color: transparent">
@@ -196,55 +204,9 @@
       </section>
 
       <section class="mt-4">
-        <div class="row task_content">Cards</div>
+        <div class="row task_content"></div>
       </section>
     </div>
-
-    <!--JS part
-    <div class="col-md-6 col-lg-4 mt-3 id=${id} key=${id}">
-      <div class="card shadow-sm task_card">
-        <div
-          class="card-header d-flex justify-content-end task_card_header gap-2"
-        >
-          <button type="button" class="btn btn-outline-info mr-2" name="${id}">
-            <i class="fas fa-pencil-alt" name="${id}"></i>
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-danger mr-2"
-            name="${id}"
-          >
-            <i class="fas fa-trash-alt" name="${id}"></i>
-          </button>
-        </div>
-        <div class="card-body">
-          ${ url && `<img
-            width="90%"
-            src="${url}"
-            alt="card-img-top"
-            class="card-img-top md-3 rounded-lg"
-          />` }
-          <h4 class="card-title data-gram_editor='true'">${tasktitle}</h4>
-          <p class="task_des trim-3-lines text-muted data-gram_editor='true'">
-            ${taskdes}
-          </p>
-          <div class="tags text-white d-flex flex-wrap">
-            <span class="badge bg-primary m-1 data-gram_editor='true'"
-              >${tasktype}</span
-            >
-          </div>
-        </div>
-        <div class="card-footer">
-          <button
-            class="btn btn-outline-primary float-right"
-            data-bs-toggle="modal"
-            data-bs-target="#openTaskModal"
-          >
-            Open task
-          </button>
-        </div>
-      </div>
-    </div>-->
 
     <!--My Script-->
     <script src="/index.js"></script>
